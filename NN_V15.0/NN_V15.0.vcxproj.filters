@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BitOps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genBCKDPROP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genCONV.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genCOSTMOD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genDECC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genFULLCONN.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genFWDPROP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genNETPAR_GRADIENT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genPARAMS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genRNE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genSEED.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genSource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genSTOCH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genTOP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genTRAINING.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="genUBlazeSim.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Verilog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NN_DataTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BitOps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genBCKDPROP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genCONV.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genCOSTMOD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genDECC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genFULLCONN.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genFWDPROP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genNETPAR_GRADIENT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genPARAMS_sim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genRNE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genSEED.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genSTOCH.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genTOP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genTRAINING.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="genUBlazeSim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NNutilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Verilog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
