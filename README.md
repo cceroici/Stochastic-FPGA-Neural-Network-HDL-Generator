@@ -7,11 +7,11 @@ To generate a Verilog project with a specified model architecture, run "main.cpp
 
 To customize the model architecture, within "main.cpp", modify the specified layers:
 
-    	AddInputLayer(sConfig, N_INPUTS, 1, layerN);
-        AddConvolutionalLayer(sConfig, 6, 4 * 4, 2, layerN);
-        AddFullyConnectedLayer(sConfig, 25, layerN);
-        AddFullyConnectedLayer(sConfig, 8, layerN);
-        N_HIDDENLYR = AddOutputLayer(sConfig, N_OUTPUTS, layerN);
+    AddInputLayer(sConfig, N_INPUTS, 1, layerN);
+    AddConvolutionalLayer(sConfig, 6, 4 * 4, 2, layerN);
+    AddFullyConnectedLayer(sConfig, 25, layerN);
+    AddFullyConnectedLayer(sConfig, 8, layerN);
+    N_HIDDENLYR = AddOutputLayer(sConfig, N_OUTPUTS, layerN);
 
 # Synthesizing/Simulating Generated Verilog Code
 
