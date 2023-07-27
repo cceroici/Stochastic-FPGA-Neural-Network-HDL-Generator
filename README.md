@@ -24,7 +24,7 @@ This project support fully-connected/dense and convoluational 2D layers. In addi
 
 # Examples
 
-For an example of the generated HDL project files, see 
+For an example of the generated HDL project files, see [here](https://github.com/cceroici/Stochastic-Neural-Network.git)
 
 
 
