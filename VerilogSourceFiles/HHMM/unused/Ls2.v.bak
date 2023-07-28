@@ -1,0 +1,81 @@
+// level of size 2
+
+module Ls2(CLK,INIT,BV,P0Raw,P1Raw,PeRaw,S0,S1,T);
+
+parameter Del0 = 0;
+parameter Del1 = 0;
+parameter Del2 = 0;
+parameter Del3 = 0;
+parameter Del4 = 0;
+
+
+input CLK,INIT;
+input [1:0] P0Raw,P1Raw,PeRaw;
+input [1:0] BV;
+
+output reg S0 = 1'b0;
+output reg S1 = 1'b0;
+output reg T = 1'b1;
+
+reg DEC = 1'b0;
+reg S0mem = 1'b0;
+reg S1mem = 1'b0;
+
+wire P0,P1,Pe;
+
+//wire DECpulse,DEClag,DEC0,DEC1,DEC2,DEC3,DEC /* synthesis keep */;
+//wire EN_pulse,EN_lag,EN0,EN1,EN2,EN3,EN /* synthesis keep */;
+//wire P0,P1_0,P1_1,P1,Pe_0,Pe_1,Pe_2,Pe_3,Pe /* synthesis keep */; // probabilities after multiplexors
+wire T1,T2 /* synthesis keep */; // temporary decision signals
+
+/*
+	INIT: initialize states and flags to zero
+	DEC: decision flag. Single probability has been detected and a transition is requested.
+	T: terminate signal
+	T_UP: terminate signal from sub-level (for re-entry)
+	EN: enable decision search signal
+	P(x)Raw: raw probabilities from any state (y) to state (x)
+	P(x): probability from state S to (x)
+*/
+
+MPX MPX0(1'b1,{S1mem,S0mem},P0Raw,P0);   // choose source state with same destination states (EN,SEL[],IN[],OUT)
+MPX MPX1(1'b1,{S1mem,S0mem},P1Raw,P1); 
+MPX MPX2(1'b1,{S1mem,S0mem},PeRaw,Pe);
+
+
+xor #Del0 u1(T1,P0,P1,Pe);
+and #Del1 u2(T2,P0,P1,Pe);
+
+always @(posedge CLK) begin
+	
+	case (BV)
+		0 : begin // sleep (no activation)
+				S0 = 1'b0;
+				S1 = 1'b0;
+				T = 1'b0;
+			end
+		1 : begin // search state
+				#Del0 DEC = (~T2)&(T1)&(~INIT);  // search for decision
+				#Del1 S0 = ((S0&P0)|(S0&P1&Pe)|(S0&(~P1)&(~Pe))|(P0&(~P1)&(~Pe)))&(~S1); // extra terms to preserve state transition
+				#Del2 S1 = ((S1&P1)|(S1&P0&Pe)|(S1&(~P0)&(~Pe))|((~P0)&(P1)&(~Pe)))&(~S0);
+				#Del3 T = (~P0)&(~P1)&(Pe); // terminate
+			end
+		2 : begin // sleep (sub-state active)
+				S0 = 1'b0;
+				S1 = 1'b0;
+			end
+		3 : begin // initialization
+				#Del3 T = 1'b0; // enable level below
+				#Del4 S0 = 1'b0;
+				#Del0 S1 = 1'b0;
+			end
+	endcase
+	
+end
+
+always @(posedge DEC or posedge (~(BV[0]|BV[1]))) begin
+	#Del4 S0mem=S0&(BV[0]|BV[1]);
+	#Del4 S1mem=S1&(BV[0]|BV[1]);
+end
+
+endmodule

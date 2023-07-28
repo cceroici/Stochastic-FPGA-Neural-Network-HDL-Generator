@@ -1,0 +1,30 @@
+// Chris Ceroici
+// August 12 2013
+//
+// Converts a decimal probability into an 8-bit stochastic stream
+// Input fraction must be scaled to x/256
+
+module DEC2STCH(CLK,D,LFSR,S);
+
+parameter ND = 8; 					// precision of decimal fraction
+parameter LFSR_S = 8; 			// LFSR size
+
+input [ND-1:0] D; 					// input probability scaled to x/256
+input [LFSR_S-1:0] LFSR; // LFSR comparator value
+input CLK; 
+
+output S; 								// stochastic bit
+
+reg Comp = 1'b0; 								// comparator output
+
+assign S = Comp;
+
+reg CLK2  =1'b0;
+
+always @(posedge CLK) CLK2 <= ~CLK2;
+
+always @(posedge CLK2) begin
+	#2 Comp <= (D>=LFSR) ? 1'b1 : 1'b0;
+end	
+
+endmodule

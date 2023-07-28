@@ -1,0 +1,17 @@
+
+
+
+module NN_InputWeight(a,alpha,beta,zp);
+
+
+input a,alpha,beta;
+
+output zp;
+
+wire zp_temp;
+
+assign zp_temp = a&alpha;
+assign zp = zp_temp|beta;
+
+
+endmodule

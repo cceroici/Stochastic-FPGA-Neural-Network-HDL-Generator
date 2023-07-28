@@ -1,0 +1,46 @@
+
+
+
+module NN_DNODE(yk,ak,atj,zk,scale,SIGN,dalpha,dbeta,R,CLK,INIT);
+
+parameter NB = 16;
+parameter NN = 3;
+parameter MEMSIZE = 6;
+
+input CLK,INIT;
+input [NB-1:0] yk; // triaining value for kth output node
+input [NB-1:0] ak; // output of kth output node
+input [NN-1:0] atj; // ouput of jth node for each node in previous layer
+input zk; // input to kth output node
+input scale; // normalization stochastic stream
+input [NB-1:0] R;
+
+output SIGN; // sign of error for this output cost derivative to be applied to dalpha and dbeta
+output [NN-1:0] dalpha; // output gradients of alpha transition weight (dC/dalpha)
+output [NN-1:0] dbeta; // output gradients of alpha transition weight (dC/dbeta)
+
+wire [NB-1:0] eps; // derivative of cost function wrt output (dC/dak)
+wire eps_ss;
+wire delta; // derivative of cost function wrt output state input z (dC/dzk)
+
+NN_ABS_SUB SUB0(.A(ak),.B(yk),.OUT(eps),.SIGN(SIGN));
+defparam SUB0.NB = NB;
+
+DEC2STCH DS0(CLK,eps,R,eps_ss);
+defparam DS0.ND = NB;
+
+//NN_DELTACALC DELTACALC0(.eps(eps_ss),.z(zk),.scale(scale),.delta(delta),.INIT(INIT),.CLK(CLK));
+//defparam DELTACALC0.MEMSIZE = MEMSIZE;
+
+assign delta = eps_ss;
+
+genvar n;
+generate 
+	for (n=0; n<NN;n=n+1) begin : u
+		NN_GRADCALC GRADCALC (.delta(delta),.a(atj[n]),.dalpha(dalpha[n]),.dbeta(dbeta[n]));
+	end
+endgenerate
+
+
+
+endmodule

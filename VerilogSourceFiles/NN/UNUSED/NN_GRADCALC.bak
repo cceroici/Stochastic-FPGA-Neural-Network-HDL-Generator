@@ -1,0 +1,14 @@
+
+
+
+module NN_GRADCALC(delta,a,dalpha,dbeta);
+
+input delta,a;
+
+output dalpha,dbeta;
+
+assign dbeta = delta;
+
+and a0(dalpha,delta,a);
+
+endmodule
